@@ -8,6 +8,7 @@ require 'rspec/rails'
 
 require 'support/factory_bot'
 require 'support/shoulda_matchers'
+require 'support/api_helper'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -35,6 +36,7 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  config.include ApiHelper
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
