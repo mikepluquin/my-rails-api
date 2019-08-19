@@ -1,13 +1,17 @@
 class User < ApplicationRecord
   has_secure_password
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :liked_posts, :through => :likes
-  has_many :followings, dependent: :destroy
-  has_many :followers, through: :friendships
-  has_many :followeds, through: :friendships
-  has_many :conversations, dependent: :destroy
+  has_many :liked_posts, :through => :likes, source: :post
+
+  has_many :followings_in, dependent: :destroy, foreign_key: "followed_id", class_name: 'Following'
+  has_many :followings_out, dependent: :destroy, foreign_key: "follower_id", class_name: 'Following'
+  has_many :followers, through: :followings_in
+  has_many :followeds, through: :followings_out
+
+  has_many :conversations_sent, dependent: :destroy, class_name: 'Conversation', foreign_key: "sender_id"
+  has_many :conversations_received, dependent: :destroy, class_name: 'Conversation', foreign_key: "recipient_id"
 
   has_one_attached :profile_picture
 
