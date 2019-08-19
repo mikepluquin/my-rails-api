@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :post do
-    body { "MyString" }
-    user { nil }
+    body { Faker::Movies::StarWars.quote }
+    user
   end
 end

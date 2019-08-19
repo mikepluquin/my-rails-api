@@ -4,3 +4,8 @@ module ApiHelper
     request.headers.merge!('Authorization': "Bearer #{token}")
   end
 end
+
+
+RSpec.configure do |config|
+  config.include ApiHelper
+end

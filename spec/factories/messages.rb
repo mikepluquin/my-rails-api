@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :message do
-    user { nil }
-    conversation { nil }
-    body { "MyText" }
+    user
+    conversation
+    body { Faker::Movies::StarWars.wookiee_sentence }
     read { false }
   end
 end

@@ -7,7 +7,6 @@ RSpec.describe Following, type: :model do
 
     it { is_expected.to have_db_index(:followed_id) }
     it { is_expected.to have_db_index(:follower_id) }
-
   end
 
   describe 'relations' do
