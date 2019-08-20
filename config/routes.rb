@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  resources :users do
-    resources :posts
+  resources :users, except: [:put] do
+    resources :posts, except: [:put]
     resources :followeds, only: [:index, :create, :destroy]
     resources :followers, only: [:index]
-    resources :conversations do
-      resources :messages, except: [:index, :show]
+    resources :conversations, except: [:put] do
+      resources :messages, except: [:index, :show, :put]
     end
   end
 

@@ -26,15 +26,26 @@ class UsersController < ApplicationController
 
   # PUT /users/{username}
   def update
-    unless @user.update(user_params)
-      render json: { errors: @user.errors.full_messages },
-             status: :unprocessable_entity
+    if @user == @current_user
+      if @user.update(user_params)
+        render json: @user, status: :ok
+      else
+        render json: { errors: @user.errors.full_messages },
+               status: :unprocessable_entity
+      end
+    else
+      render status: :forbidden
     end
   end
 
   # DELETE /users/{username}
   def destroy
-    @user.destroy
+    if @user == @current_user
+      @user.destroy
+      render status: :no_content
+    else
+      render status: :forbidden
+    end
   end
 
   private

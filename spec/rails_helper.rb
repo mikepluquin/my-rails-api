@@ -9,6 +9,7 @@ require 'rspec/rails'
 require 'support/factory_bot'
 require 'support/shoulda_matchers'
 require 'support/api_helper'
+Dir[Rails.root.join("spec/requests/shared_examples/**/*.rb")].each {|f| require f}
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
