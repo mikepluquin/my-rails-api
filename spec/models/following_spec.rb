@@ -16,5 +16,25 @@ RSpec.describe Following, type: :model do
 
   describe 'validations' do
     it { is_expected.to validate_uniqueness_of(:followed_id).scoped_to(:follower_id) }
+
+    let(:follower) { create (:user) }
+    let(:followed) { create (:user) }
+
+    context 'different follower and followed' do
+      before do
+        subject.follower = follower
+        subject.followed = followed
+      end
+      it { is_expected.to be_valid }
+    end
+
+    context 'same follower and followed' do
+      before do
+        subject.follower = follower
+        subject.followed = follower
+      end
+      it { is_expected.to_not be_valid }
+    end
+
   end
 end

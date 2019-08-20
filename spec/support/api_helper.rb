@@ -1,7 +1,8 @@
 module ApiHelper
-  def authenticated_header(request, user)
+  def authenticated_header(user)
     token = JsonWebToken.encode(user_id: user.id)
-    request.headers.merge!('Authorization': "Bearer #{token}")
+    headers = {'Authorization': "Bearer #{token}"}
+    return headers
   end
 end
 

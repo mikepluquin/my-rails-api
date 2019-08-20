@@ -14,8 +14,8 @@ RSpec.describe Like, type: :model do
     it { is_expected.to belong_to(:post) }
   end
 
-  describe 'validations' do
+  # describe 'validations' do
     # TODO : correct the test, it fails but the feature is working
     # it { is_expected.to validate_uniqueness_of(:user_id).scoped_to(:post_id) }
-  end
+  # end
 end

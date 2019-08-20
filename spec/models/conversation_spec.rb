@@ -15,6 +15,25 @@ RSpec.describe Conversation, type: :model do
 
   describe 'validations' do
     it { is_expected.to validate_uniqueness_of(:sender_id).scoped_to(:recipient_id) }
+
+    let(:recipient) { create (:user) }
+    let(:sender) { create (:user) }
+
+    context 'different recipient and sender' do
+      before do
+        subject.recipient = recipient
+        subject.sender = sender
+      end
+      it { is_expected.to be_valid }
+    end
+
+    context 'same recipient and sender' do
+      before do
+        subject.recipient = recipient
+        subject.sender = recipient
+      end
+      it { is_expected.to_not be_valid }
+    end
   end
 
 end

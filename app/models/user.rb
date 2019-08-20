@@ -23,5 +23,11 @@ class User < ApplicationRecord
     :email,
     presence: true
   )
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, if: :password_required?
+
+  private
+
+  def password_required?
+    !persisted? || !password.nil? || !password_confirmation.nil?
+  end
 end
