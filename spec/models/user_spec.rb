@@ -24,6 +24,8 @@ RSpec.describe User, type: :model do
 
     it { is_expected.to have_many(:conversations_sent).class_name('Conversation') }
     it { is_expected.to have_many(:conversations_received).class_name('Conversation') }
+    it { is_expected.to have_many(:messages).dependent(:destroy) }
+
   end
 
   describe 'validations' do

@@ -12,5 +12,4 @@ class Following < ApplicationRecord
       errors.add(:global, "followed cannot be the same as follower")
     end
   end
-
 end

@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     render json: @users, status: :ok
   end
 
-  # GET /users/{username}
+  # GET /users/{id}
   def show
     render json: @user, status: :ok
   end
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # PUT /users/{username}
+  # PUT /users/{id}
   def update
     if @user == @current_user
       if @user.update(user_params)
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/{username}
+  # DELETE /users/{id}
   def destroy
     if @user == @current_user
       @user.destroy

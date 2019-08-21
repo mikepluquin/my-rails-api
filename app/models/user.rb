@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
   has_many :conversations_sent, dependent: :destroy, class_name: 'Conversation', foreign_key: "sender_id"
   has_many :conversations_received, dependent: :destroy, class_name: 'Conversation', foreign_key: "recipient_id"
+  has_many :messages, dependent: :destroy
 
   has_one_attached :profile_picture
 

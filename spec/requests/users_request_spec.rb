@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "users requests", type: :request do
-  let!(:users) { create_list(:user, 10) }
-  let!(:user) { create(:user) }
-  let!(:valid_params) { { user: {
+  let(:users) { create_list(:user, 10) }
+  let(:user) { create(:user) }
+  let(:valid_params) { { user: {
       first_name: 'firstname',
       last_name: 'lastname',
       email: 'test@mail.com',
@@ -48,7 +48,10 @@ RSpec.describe "users requests", type: :request do
 
   context 'user logged in' do
     describe "get users" do
-      before { get users_path, headers: authenticated_header(user) }
+      before do
+        users
+        get users_path, headers: authenticated_header(user)
+      end
 
       it_should_behave_like "a success request"
       it { expect(response.body).to include user.to_json }

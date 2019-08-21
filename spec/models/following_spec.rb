@@ -35,6 +35,5 @@ RSpec.describe Following, type: :model do
       end
       it { is_expected.to_not be_valid }
     end
-
   end
 end

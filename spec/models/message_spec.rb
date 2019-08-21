@@ -16,4 +16,30 @@ RSpec.describe Message, type: :model do
     it { is_expected.to belong_to(:user) }
     it { is_expected.to belong_to(:conversation) }
   end
+
+  describe 'validations' do
+    let(:sender) { create (:user) }
+    let(:recipient) { create (:user) }
+    let(:conversation) { create (:conversation) }
+
+    context 'user is not from the conversation' do
+      before do
+        conversation.sender = sender
+        conversation.recipient = recipient
+        subject.conversation = conversation
+        subject.user = create(:user)
+      end
+      it { is_expected.to_not be_valid }
+    end
+
+    context 'user is from the conversation' do
+      before do
+        conversation.sender = sender
+        conversation.recipient = recipient
+        subject.conversation = conversation
+        subject.user = sender
+      end
+      it { is_expected.to be_valid }
+    end
+  end
 end
