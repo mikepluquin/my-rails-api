@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.all
+    @posts = Post.all.includes(:user, :likes)
     render json: @posts, status: :ok, each_serializer: PostAndUserSerializer
   end
 
