@@ -55,3 +55,5 @@ gem "jwt", "~> 2.2"
 gem "faker"
 
 gem "active_model_serializers", "~> 0.10.10"
+
+gem "rack-cors", "~> 1.0"
