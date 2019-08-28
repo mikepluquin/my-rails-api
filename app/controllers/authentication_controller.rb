@@ -10,7 +10,7 @@ class AuthenticationController < ApplicationController
       render json: { token: token, exp: time.strftime("%m-%d-%Y %H:%M"),
                      id: @current_user.id }, status: :ok
     else
-      render json: { error: 'unauthorized' }, status: :unauthorized
+      render json: { error: 'Wrong credentials' }, status: :unauthorized
     end
   end
 end

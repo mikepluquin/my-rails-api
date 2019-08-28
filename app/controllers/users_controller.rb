@@ -17,7 +17,15 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      render json: @user, status: :created
+      token = JsonWebToken.encode(user_id: @user.id)
+      time = Time.now + 24.hours.to_i
+      render json: {
+        @user,
+        token: token,
+        exp: time.strftime("%m-%d-%Y %H:%M"),
+        id: @user.id
+      },
+      status: :created
     else
       render json: { errors: @user.errors.full_messages },
              status: :unprocessable_entity
