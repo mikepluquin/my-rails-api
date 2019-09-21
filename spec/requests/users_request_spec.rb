@@ -21,20 +21,6 @@ RSpec.describe "users requests", type: :request do
       it_should_behave_like "an unauthorized request"
     end
 
-    describe "create user" do
-      context "with invalid params" do
-        let(:params) { { user: { first_name: 'firstname' } } }
-        before { post users_path, params: params }
-        it_should_behave_like "an unprocessable entity request"
-      end
-
-      context "with valid params" do
-        before { post users_path, params: valid_params }
-        it_should_behave_like "a created request"
-        it { expect(response.body).to include valid_params[:user][:email] }
-      end
-    end
-
     describe "update user" do
       before { patch user_path(id: user.id) }
       it_should_behave_like "an unauthorized request"

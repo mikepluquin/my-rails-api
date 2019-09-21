@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users, except: [:put] do
+  resources :users, except: [:put, :create] do
     resources :posts, except: [:put]
     resources :followeds, only: [:index, :create, :destroy]
     resources :followers, only: [:index]
@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   end
 
   post '/auth/login', to: 'authentication#login'
+  post '/auth/register', to: 'authentication#register'
 end
