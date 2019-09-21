@@ -4,11 +4,11 @@ users = []
 
 # custom user
 users << {
-  email: 'mike.pluquin@gmail.com',
-  last_name: 'Pluquin',
-  first_name: 'Mike',
+  email: 'john.doe@mail.com',
+  last_name: 'John',
+  first_name: 'Doe',
   password: 'password',
-  born_date:  DateTime.new(1995, 8, 6)
+  born_date:  DateTime.new(1990, 7, 5)
 }
 
 # n random users
