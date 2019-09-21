@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe "authentication requests", type: :request do
   let(:user) { create(:user) }
   let(:valid_params) { { user: {
-    first_name: 'firstname',
-    last_name: 'lastname',
+    username: 'username',
     email: 'test@mail.com',
     password: 'password'
   } } }
@@ -26,7 +25,7 @@ RSpec.describe "authentication requests", type: :request do
 
   describe "register" do
     context "with invalid params" do
-      let(:params) { { user: { first_name: 'firstname' } } }
+      let(:params) { { user: { username: 'username' } } }
       before { post auth_register_path, params: params }
       it_should_behave_like "an unprocessable entity request"
     end

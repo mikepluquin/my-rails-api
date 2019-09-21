@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe 'db columns' do
-    it { is_expected.to have_db_column(:first_name).of_type(:string) }
-    it { is_expected.to have_db_column(:last_name).of_type(:string) }
+    it { is_expected.to have_db_column(:username).of_type(:string) }
     it { is_expected.to have_db_column(:email).of_type(:string) }
     it { is_expected.to have_db_column(:born_date).of_type(:datetime) }
     it { is_expected.to have_db_column(:password_digest).of_type(:string) }
@@ -29,8 +28,7 @@ RSpec.describe User, type: :model do
   end
 
   describe 'validations' do
-    it { is_expected.to validate_presence_of(:first_name) }
-    it { is_expected.to validate_presence_of(:last_name) }
+    it { is_expected.to validate_presence_of(:username) }
     it { is_expected.to validate_presence_of(:email) }
 
     it { is_expected.to have_secure_password }

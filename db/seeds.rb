@@ -4,9 +4,8 @@ users = []
 
 # custom user
 users << {
-  email: 'john.doe@mail.com',
-  last_name: 'John',
-  first_name: 'Doe',
+  email: 'neo@mail.com',
+  username: 'neo'
   password: 'password',
   born_date:  DateTime.new(1990, 7, 5)
 }
@@ -15,8 +14,7 @@ users << {
 (1..50).to_a.each do |n|
   users << {
     email: Faker::Internet.unique.email,
-    last_name: Faker::Games::ElderScrolls.last_name,
-    first_name: Faker::Games::ElderScrolls.first_name,
+    username: Faker::TvShows::GameOfThrones.character,
     password: Faker::Alphanumeric.alphanumeric(number: 10),
     born_date: Faker::Date.birthday(min_age: 18, max_age: 65)
   }
@@ -30,7 +28,7 @@ posts = []
 
 (1..500).to_a.each do |n|
   posts << {
-    body: Faker::Movies::StarWars.quote,
+    body: Faker::TvShows::GameOfThrones.quote,
     user: User.order("RANDOM()").first
   }
 end
@@ -45,7 +43,7 @@ likes = []
 (1..1000).to_a.each do |n|
   likes << {
     post: Post.order("RANDOM()").first,
-    user: User.order("RANDOM()").first
+    user: User.order("RANDOM()").first,
   }
 end
 

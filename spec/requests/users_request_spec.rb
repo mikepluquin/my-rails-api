@@ -4,8 +4,7 @@ RSpec.describe "users requests", type: :request do
   let(:users) { create_list(:user, 10) }
   let(:user) { create(:user) }
   let(:valid_params) { { user: {
-      first_name: 'firstname',
-      last_name: 'lastname',
+      username: 'username',
       email: 'test@mail.com',
       password: 'password'
   } } }

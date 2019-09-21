@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :post do
-    body { Faker::Movies::StarWars.quote }
+    body { Faker::TvShows::GameOfThrones.quote }
     user
   end
 end
