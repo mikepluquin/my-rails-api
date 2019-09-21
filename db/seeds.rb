@@ -5,7 +5,7 @@ users = []
 # custom user
 users << {
   email: 'neo@mail.com',
-  username: 'neo'
+  username: 'neo',
   password: 'password',
   born_date:  DateTime.new(1990, 7, 5)
 }
