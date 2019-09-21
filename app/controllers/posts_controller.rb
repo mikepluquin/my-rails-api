@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.includes(:user, :likes).where(user: @current_user.followers)
+    @posts = Post.includes(:user, :likes).where(user: @current_user.followers).limit(5)
     render json: @posts, status: :ok, each_serializer: PostAndUserSerializer
   end
 
